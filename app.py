@@ -1,12 +1,11 @@
 from flask import Flask, render_template, jsonify, request, session
 import random
+import json
 
 app = Flask(__name__)
 app.secret_key = "nurstar_test_secret"
 
 # Test savollari JSON faylidan yuklanadi
-import json
-
 with open("tests.json", "r", encoding="utf-8") as file:
     all_tests = json.load(file)
 
@@ -33,20 +32,18 @@ def get_question():
     return jsonify({
         "index": session["current_question"] + 1,
         "savol": q["savol"],
-        "variantlar": q["variantlar"],
-        "togri": q["togri"]
-    })
+        "variantlar": q["variantlar"]
+    })  # "togri" maydonini olib tashladim
 
 @app.route("/submit_answer", methods=["POST"])
 def submit_answer():
     data = request.json
     user_answer = data.get("answer")
-    correct_answer = session["questions"][session["current_question"]]["togri"]
+    
+    correct_index = session["questions"][session["current_question"]]["togri"]  # To‘g‘ri javob indeksi
+    selected_index = session["questions"][session["current_question"]]["variantlar"].index(user_answer)  
 
-    correct_index = session["questions"][session["current_question"]]["variantlar"].index(correct_answer)
-    selected_index = session["questions"][session["current_question"]]["variantlar"].index(user_answer)
-
-    is_correct = (user_answer == correct_answer)
+    is_correct = (selected_index == correct_index)  # Foydalanuvchi tanlagan indeksni tekshirish
     if is_correct:
         session["correct_answers"] += 1
 
