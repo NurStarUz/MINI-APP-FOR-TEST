@@ -1,60 +1,77 @@
-from flask import Flask, render_template, request, jsonify
-import json
+from flask import Flask, render_template, jsonify, request, session
 import random
 
 app = Flask(__name__)
+app.secret_key = "nurstar_test_secret"
 
-# Test savollari faylini yuklash
-def load_tests():
-    with open("tests.json", "r", encoding="utf-8") as file:
-        return json.load(file)
+# Test savollari JSON faylidan yuklanadi
+import json
 
-# 10 ta tasodifiy test tanlash
-def get_random_tests():
-    all_tests = load_tests()
-    return random.sample(all_tests, 10)
+with open("tests.json", "r", encoding="utf-8") as file:
+    all_tests = json.load(file)
 
-# Global o'zgaruvchi testlarni saqlash uchun
-current_tests = []
-current_index = 0
-correct_answers = 0
+# Foydalanuvchilarning natijalari
+user_results = []
 
 @app.route("/")
-def index():
-    global current_tests, current_index, correct_answers
-    current_tests = get_random_tests()
-    current_index = 0
-    correct_answers = 0
+def home():
     return render_template("index.html")
 
-@app.route("/get_question", methods=["GET"])
+@app.route("/start_test", methods=["POST"])
+def start_test():
+    session["questions"] = random.sample(all_tests, 10)
+    session["current_question"] = 0
+    session["correct_answers"] = 0
+    return jsonify({"status": "started"})
+
+@app.route("/get_question")
 def get_question():
-    global current_index
-    if current_index < len(current_tests):
-        question = current_tests[current_index]
-        return jsonify({
-            "index": current_index + 1,
-            "savol": question["savol"],
-            "variantlar": question["variantlar"],
-            "togri": question["togri"]
-        })
-    else:
-        return jsonify({"natija": correct_answers})
+    if "questions" not in session or session["current_question"] >= len(session["questions"]):
+        return jsonify({"natija": session.get("correct_answers", 0)})
+
+    q = session["questions"][session["current_question"]]
+    return jsonify({
+        "index": session["current_question"] + 1,
+        "savol": q["savol"],
+        "variantlar": q["variantlar"],
+        "togri": q["togri"]
+    })
 
 @app.route("/submit_answer", methods=["POST"])
 def submit_answer():
-    global current_index, correct_answers
     data = request.json
-    selected_answer = data.get("javob")
-    
-    if current_index < len(current_tests):
-        correct_answer = current_tests[current_index]["variantlar"][current_tests[current_index]["togri"]]
-        is_correct = selected_answer == correct_answer
-        if is_correct:
-            correct_answers += 1
-        current_index += 1
-        return jsonify({"correct": is_correct, "correct_answer": correct_answer})
-    return jsonify({"error": "All questions answered!"})
+    user_answer = data.get("answer")
+    correct_answer = session["questions"][session["current_question"]]["togri"]
+
+    correct_index = session["questions"][session["current_question"]]["variantlar"].index(correct_answer)
+    selected_index = session["questions"][session["current_question"]]["variantlar"].index(user_answer)
+
+    is_correct = (user_answer == correct_answer)
+    if is_correct:
+        session["correct_answers"] += 1
+
+    session["current_question"] += 1
+
+    return jsonify({
+        "is_correct": is_correct,
+        "correct_index": correct_index,
+        "selected_index": selected_index
+    })
+
+@app.route("/my_results")
+def my_results():
+    return jsonify({"natijalar": user_results})
+
+@app.route("/top10")
+def top10():
+    top_results = sorted(user_results, reverse=True)[:10]
+    return jsonify({"top": top_results})
+
+@app.route("/save_result", methods=["POST"])
+def save_result():
+    data = request.json
+    user_results.append(data["score"])
+    return jsonify({"status": "saved"})
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=10000)
