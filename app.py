@@ -1,62 +1,66 @@
-from flask import Flask, jsonify, render_template, request, session
+from flask import Flask, jsonify, request
 import json
 import random
+import datetime
 
 app = Flask(__name__)
-app.secret_key = "nurstar_secret"  # Sessiyalar uchun
 
-def load_questions():
+# JSON fayldan testlarni yuklash
+def load_tests():
     with open("tests.json", "r", encoding="utf-8") as file:
         return json.load(file)
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+user_results = []
+ranking_data = [
+    {"name": "Ali", "score": 8},
+    {"name": "Vali", "score": 7},
+    {"name": "Sardor", "score": 9},
+    {"name": "Madina", "score": 6},
+    {"name": "Dilnoza", "score": 10}
+]
 
-@app.route("/get_tests", methods=["GET"])
-def get_tests():
-    all_questions = load_questions()
-    session["questions"] = random.sample(all_questions, 10)  # 10 ta tasodifiy test
-    session["score"] = 0  # Foydalanuvchi natijasi
-    session["current_index"] = 0  # Hozirgi test indeksi
-    return jsonify(session["questions"])
+@app.route('/test', methods=['GET'])
+def get_test():
+    tests = load_tests()
+    random_tests = random.sample(tests, min(10, len(tests)))
+    return jsonify(random_tests)
 
-@app.route("/submit_answer", methods=["POST"])
-def submit_answer():
+@app.route('/check_answer', methods=['POST'])
+def check_answer():
     data = request.json
+    tests = load_tests()
+
+    index = data.get("index")
     user_answer = data.get("answer")
-    index = session.get("current_index", 0)
 
-    questions = session.get("questions", [])
-    if index >= len(questions):
-        return jsonify({"message": "Barcha testlar tugadi!", "finished": True, "score": session.get("score", 0)})
+    if index is None or user_answer is None:
+        return jsonify({"error": "Invalid request"}), 400
 
-    correct_answer = questions[index]["variantlar"][questions[index]["togri"]]
+    correct_answer = tests[index]["togri"]
     is_correct = (user_answer == correct_answer)
 
-    if is_correct:
-        session["score"] += 1  # To‘g‘ri javob uchun ball qo‘shiladi
+    return jsonify({"correct": is_correct, "correct_answer": correct_answer})
 
-    session["current_index"] += 1  # Keyingi savolga o‘tish
-
-    return jsonify({
-        "correct": correct_answer,
-        "is_correct": is_correct,
-        "next_question": session["current_index"] < len(questions),
-        "score": session["score"]
-    })
-
-@app.route("/get_results", methods=["GET"])
+@app.route('/results', methods=['GET'])
 def get_results():
-    return jsonify({"score": session.get("score", 0)})
+    return jsonify(user_results)
 
-@app.route("/get_ranking", methods=["GET"])
+@app.route('/ranking', methods=['GET'])
 def get_ranking():
-    return jsonify({"top10": [
-        {"name": "Ali", "score": 9},
-        {"name": "Hasan", "score": 8},
-        {"name": "Olim", "score": 7}
-    ]})
+    sorted_ranking = sorted(ranking_data, key=lambda x: x["score"], reverse=True)[:10]
+    return jsonify(sorted_ranking)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+@app.route('/submit_result', methods=['POST'])
+def submit_result():
+    data = request.json
+    score = data.get("score", 0)
+
+    user_results.append({
+        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+        "score": score
+    })
+    
+    return jsonify({"message": "Natija saqlandi!"}), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
