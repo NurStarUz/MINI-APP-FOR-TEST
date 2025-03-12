@@ -1,0 +1,1 @@
+# MINI-APP-FOR-TEST
