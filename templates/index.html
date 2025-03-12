@@ -10,27 +10,51 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
+            background-color: #f4f4f4; /* Yaltiroq kulrang fon */
+            color: #333;
+        }
+        h1 {
+            color: #0088cc;
         }
         button {
             background-color: #0088cc;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
-            margin: 5px;
+            border-radius: 8px;
+            margin: 10px;
             cursor: pointer;
-            display: block;
-            width: 200px;
-            margin: 10px auto;
+            width: 250px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #006699;
         }
         #test-container {
             margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .answer-btn {
+            background-color: #34c759; /* Yashil tugmalar */
+            width: 200px;
+        }
+        .answer-btn:hover {
+            background-color: #2a9c48;
         }
     </style>
 </head>
 <body>
-    <h1>Salom, bu NurStar Mini App!</h1>
-    <p>Ushbu sahifa Flask va Telegram Mini App uchun tayyorlandi.</p>
+    <h1>NurStar Mini App</h1>
+    <p>Testlar, natijalar va reytinglar!</p>
 
     <button onclick="startTest()">Test Bajarish</button>
     <button onclick="viewResults()">Natijalarim</button>
@@ -47,10 +71,12 @@
                     testDiv.innerHTML = "";
                     data.forEach(savol => {
                         let savolDiv = document.createElement("div");
-                        savolDiv.innerHTML = `<p><b>${savol.savol}</b></p>`;
+                        savolDiv.className = "question";
+                        savolDiv.innerHTML = `<p>${savol.savol}</p>`;
                         savol.variantlar.forEach(variant => {
                             let btn = document.createElement("button");
                             btn.innerText = variant;
+                            btn.className = "answer-btn";
                             btn.onclick = function() {
                                 checkAnswer(variant, savol.togri);
                             };
