@@ -45,7 +45,7 @@
         .wrong {
             background-color: lightcoral !important;
         }
-        #next-btn {
+        #next-btn, #start-test {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
@@ -54,9 +54,8 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            display: none;
         }
-        #next-btn:hover {
+        #next-btn:hover, #start-test:hover {
             background-color: #27ae60;
         }
         #result {
@@ -70,15 +69,28 @@
 
     <div class="container">
         <h1>Test Sinovi</h1>
-        <div class="question-box" id="question">Savol yuklanmoqda...</div>
-        <div class="options" id="options"></div>
-        <button id="next-btn" onclick="loadQuestion()">Keyingi savol</button>
-        <div id="result"></div>
+        <button id="start-test" onclick="startTest()">Testni boshlash</button>
+        <button id="show-results" onclick="showResults()">Mening natijalarim</button>
+        <button id="show-top10" onclick="showTop10()">TOP10 Reyting</button>
+
+        <div id="test-container" style="display:none;">
+            <div class="question-box" id="question"></div>
+            <div class="options" id="options"></div>
+            <button id="next-btn" onclick="loadQuestion()" style="display:none;">Keyingi savol</button>
+            <div id="result"></div>
+        </div>
     </div>
 
     <script>
-        let currentQuestion = 0;
-        let correctAnswers = 0;
+        function startTest() {
+            fetch("/start_test", { method: "POST" })
+                .then(response => response.json())
+                .then(() => {
+                    document.getElementById("start-test").style.display = "none";
+                    document.getElementById("test-container").style.display = "block";
+                    loadQuestion();
+                });
+        }
 
         function loadQuestion() {
             document.getElementById("next-btn").style.display = "none";
@@ -86,10 +98,13 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.natija !== undefined) {
-                        document.querySelector(".container").innerHTML = `
-                            <h1>Test tugadi!</h1>
-                            <p>Siz <strong>${data.natija}</strong> ta to‘g‘ri javob berdingiz.</p>
-                        `;
+                        fetch("/save_result", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ score: data.natija })
+                        });
+                        document.querySelector(".container").innerHTML = `<h1>Test tugadi!</h1>
+                            <p>Siz <strong>${data.natija}</strong> ta to‘g‘ri javob berdingiz.</p>`;
                     } else {
                         document.getElementById("question").textContent = data.index + ". " + data.savol;
                         let optionsDiv = document.getElementById("options");
@@ -97,34 +112,22 @@
                         data.variantlar.forEach((option, index) => {
                             let btn = document.createElement("button");
                             btn.textContent = option;
-                            btn.className = "option";
-                            btn.onclick = () => submitAnswer(option, index, data.togri);
+                            btn.onclick = () => submitAnswer(option);
                             optionsDiv.appendChild(btn);
                         });
                     }
                 });
         }
 
-        function submitAnswer(selected, selectedIndex, correctIndex) {
-            let buttons = document.querySelectorAll(".option");
-            buttons.forEach((btn, index) => {
-                btn.style.pointerEvents = "none";
-                if (index === correctIndex) {
-                    btn.classList.add("correct");
-                }
-                if (index === selectedIndex && index !== correctIndex) {
-                    btn.classList.add("wrong");
-                }
+        function submitAnswer(answer) {
+            fetch("/submit_answer", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ answer: answer })
+            }).then(() => {
+                document.getElementById("next-btn").style.display = "block";
             });
-
-            if (selectedIndex === correctIndex) {
-                correctAnswers++;
-            }
-
-            document.getElementById("next-btn").style.display = "block";
         }
-
-        window.onload = loadQuestion;
     </script>
 
 </body>
