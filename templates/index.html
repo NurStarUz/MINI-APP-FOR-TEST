@@ -3,160 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NurStar Mini App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>Test Platformasi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
             text-align: center;
-            padding: 20px;
-            background-color: #1c1c1e;
-            color: white;
         }
-        h1 {
-            color: #34c759;
-        }
-        button {
-            background-color: #007aff;
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            margin: 10px;
-            cursor: pointer;
-            width: 250px;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        button:hover {
-            background-color: #005ecb;
-        }
-        #test-container {
-            margin-top: 20px;
+        .question-container {
+            margin-bottom: 20px;
             padding: 15px;
-            background-color: #2c2c2e;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        }
-        .question {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .answer-btn {
-            background-color: #007aff;
-            width: 200px;
-            display: block;
-            margin: 5px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
         }
         .correct {
-            background-color: #34c759 !important; /* Yashil */
+            background-color: #a8e6a8;
         }
-        .wrong {
-            background-color: #ff3b30 !important; /* Qizil */
+        .incorrect {
+            background-color: #f5a8a8;
+        }
+        .option {
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>NurStar Mini App</h1>
-    <p>Testlar, natijalar va reytinglar!</p>
 
-    <button onclick="startTest()">Test Bajarish</button>
-    <button onclick="viewResults()">Natijalarim</button>
-    <button onclick="viewRanking()">TOP10 Reyting</button>
-
+    <h1>Testni boshlash</h1>
+    <button onclick="startTest()">Testni boshlash</button>
+    
     <div id="test-container"></div>
+    <p id="result"></p>
 
     <script>
-        let currentTestIndex = 0;
-        let tests = [];
-        let correctAnswers = 0;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questions = [];
 
-        function startTest() {
-            fetch('/test')
-                .then(response => response.json())
-                .then(data => {
-                    tests = data;
-                    currentTestIndex = 0;
-                    correctAnswers = 0;
-                    showQuestion();
-                })
-                .catch(error => console.error("Xato:", error));
+        async function startTest() {
+            const response = await fetch('/get_tests');
+            questions = await response.json();
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('result').innerText = "";
+            showQuestion();
         }
 
         function showQuestion() {
-            if (currentTestIndex >= tests.length) {
+            if (currentQuestionIndex >= questions.length) {
                 showResult();
                 return;
             }
 
-            let testDiv = document.getElementById("test-container");
-            testDiv.innerHTML = "";
-
-            let savol = tests[currentTestIndex];
-            let savolDiv = document.createElement("div");
-            savolDiv.className = "question";
-            savolDiv.innerHTML = `<p>${savol.savol}</p>`;
-
-            savol.variantlar.forEach((variant, index) => {
-                let btn = document.createElement("button");
-                btn.innerText = variant;
-                btn.className = "answer-btn";
-                btn.onclick = function() {
-                    checkAnswer(btn, index, savol.togri);
-                };
-                savolDiv.appendChild(btn);
-            });
-
-            testDiv.appendChild(savolDiv);
+            let question = questions[currentQuestionIndex];
+            let container = document.getElementById('test-container');
+            container.innerHTML = `
+                <div class="question-container">
+                    <h3>${question.savol}</h3>
+                    ${question.variantlar.map(option => 
+                        `<div class="option" onclick="checkAnswer('${option}', '${question.togri}', this)">${option}</div>`
+                    ).join('')}
+                </div>
+            `;
         }
 
-        function checkAnswer(btn, tanlanganIndex, togriIndex) {
-            let allButtons = document.querySelectorAll(".answer-btn");
+        function checkAnswer(selected, correct, element) {
+            let options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.style.pointerEvents = 'none');
 
-            allButtons.forEach(button => {
-                button.disabled = true;
-                if (button.innerText === tests[currentTestIndex].variantlar[togriIndex]) {
-                    button.classList.add("correct");
-                }
-            });
-
-            if (tanlanganIndex !== togriIndex) {
-                btn.classList.add("wrong");
+            if (selected === correct) {
+                element.classList.add('correct');
+                score++;
             } else {
-                correctAnswers++;
+                element.classList.add('incorrect');
+                options.forEach(opt => {
+                    if (opt.innerText === correct) {
+                        opt.classList.add('correct');
+                    }
+                });
             }
 
             setTimeout(() => {
-                currentTestIndex++;
+                currentQuestionIndex++;
                 showQuestion();
             }, 1000);
         }
 
         function showResult() {
-            let testDiv = document.getElementById("test-container");
-            testDiv.innerHTML = `<p>Test yakunlandi! Siz ${correctAnswers} ta to'g'ri javob berdingiz.</p>`;
-        }
+            document.getElementById('test-container').innerHTML = "";
+            document.getElementById('result').innerText = `Sizning natijangiz: ${score} / ${questions.length}`;
 
-        function viewResults() {
-            fetch('/results')
-                .then(response => response.json())
-                .then(data => {
-                    let resultText = data.map(res => `📅 ${res.date}: ${res.score} ball`).join("<br>");
-                    document.getElementById("test-container").innerHTML = `<p>${resultText}</p>`;
-                })
-                .catch(error => console.error("Xato:", error));
-        }
-
-        function viewRanking() {
-            fetch('/ranking')
-                .then(response => response.json())
-                .then(data => {
-                    let rankText = data.map((user, index) => `${index + 1}. ${user.name} - ${user.score} ball`).join("<br>");
-                    document.getElementById("test-container").innerHTML = `<p>🏆 TOP 10 Reyting:<br>${rankText}</p>`;
-                })
-                .catch(error => console.error("Xato:", error));
+            fetch('/save_result', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ score: score })
+            }).then(res => res.json()).then(data => console.log(data));
         }
     </script>
+
 </body>
 </html>
