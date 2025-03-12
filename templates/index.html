@@ -4,131 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Sinovi</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
+            background-color: #f5f5f5;
         }
         .container {
-            max-width: 600px;
+            max-width: 400px;
             margin: 50px auto;
             padding: 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        .question-box {
-            font-size: 20px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        .options button {
+        .btn {
             display: block;
             width: 100%;
             padding: 10px;
-            margin: 5px 0;
+            margin: 10px 0;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            background-color: #3498db;
-            color: white;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .options button:hover {
-            background-color: #2980b9;
-        }
-        .correct {
-            background-color: lightgreen !important;
-        }
-        .wrong {
-            background-color: lightcoral !important;
-        }
-        #next-btn, #start-test {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #2ecc71;
-            color: white;
-            border: none;
             border-radius: 5px;
-            cursor: pointer;
         }
-        #next-btn:hover, #start-test:hover {
-            background-color: #27ae60;
-        }
-        #result {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+        .start-btn { background-color: green; color: white; }
+        .answer-btn { background-color: lightgray; color: black; }
+        .correct { background-color: #28a745 !important; color: white; }
+        .incorrect { background-color: #dc3545 !important; color: white; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Test Sinovi</h1>
-        <button id="start-test" onclick="startTest()">Testni boshlash</button>
-        <button id="show-results" onclick="showResults()">Mening natijalarim</button>
-        <button id="show-top10" onclick="showTop10()">TOP10 Reyting</button>
-
-        <div id="test-container" style="display:none;">
-            <div class="question-box" id="question"></div>
-            <div class="options" id="options"></div>
-            <button id="next-btn" onclick="loadQuestion()" style="display:none;">Keyingi savol</button>
-            <div id="result"></div>
+        <button class="btn start-btn" id="start">Testni boshlash</button>
+        <div id="question-container" class="hidden">
+            <h2 id="question"></h2>
+            <div id="answers"></div>
+        </div>
+        <div id="result-container" class="hidden">
+            <h2 id="result-text"></h2>
+            <button class="btn start-btn" id="main-menu">Asosiy menyuga qaytish</button>
         </div>
     </div>
 
     <script>
-        function startTest() {
-            fetch("/start_test", { method: "POST" })
-                .then(response => response.json())
-                .then(() => {
-                    document.getElementById("start-test").style.display = "none";
-                    document.getElementById("test-container").style.display = "block";
+        let currentQuestionIndex = 0;
+        let totalCorrect = 0;
+
+        $(document).ready(function() {
+            $("#start").click(function() {
+                $.post("/start_test", function() {
+                    $("#start").hide();
+                    $("#question-container").removeClass("hidden");
                     loadQuestion();
                 });
-        }
-
-        function loadQuestion() {
-            document.getElementById("next-btn").style.display = "none";
-            fetch("/get_question")
-                .then(response => response.json())
-                .then(data => {
-                    if (data.natija !== undefined) {
-                        fetch("/save_result", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({ score: data.natija })
-                        });
-                        document.querySelector(".container").innerHTML = `<h1>Test tugadi!</h1>
-                            <p>Siz <strong>${data.natija}</strong> ta to‘g‘ri javob berdingiz.</p>`;
-                    } else {
-                        document.getElementById("question").textContent = data.index + ". " + data.savol;
-                        let optionsDiv = document.getElementById("options");
-                        optionsDiv.innerHTML = "";
-                        data.variantlar.forEach((option, index) => {
-                            let btn = document.createElement("button");
-                            btn.textContent = option;
-                            btn.onclick = () => submitAnswer(option);
-                            optionsDiv.appendChild(btn);
-                        });
-                    }
-                });
-        }
-
-        function submitAnswer(answer) {
-            fetch("/submit_answer", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ answer: answer })
-            }).then(() => {
-                document.getElementById("next-btn").style.display = "block";
             });
-        }
-    </script>
 
+            function loadQuestion() {
+                $.get("/get_question", function(data) {
+                    if ("natija" in data) {
+                        $("#question-container").addClass("hidden");
+                        $("#result-container").removeClass("hidden");
+                        $("#result-text").text("Test tugadi! Siz " + data.natija + " ta to‘g‘ri javob berdingiz.");
+                        return;
+                    }
+                    $("#question").text(data.savol);
+                    $("#answers").empty();
+                    data.variantlar.forEach((answer, index) => {
+                        $("#answers").append(`<button class="btn answer-btn" data-index="${index}">${answer}</button>`);
+                    });
+
+                    $(".answer-btn").click(function() {
+                        let selectedAnswer = $(this).text();
+                        $.post("/submit_answer", JSON.stringify({ answer: selectedAnswer }), "json")
+                        .done(function(response) {
+                            $(".answer-btn").prop("disabled", true);
+                            $(".answer-btn").eq(response.correct_index).addClass("correct");
+                            if (response.selected_index !== response.correct_index) {
+                                $(".answer-btn").eq(response.selected_index).addClass("incorrect");
+                            }
+                            setTimeout(loadQuestion, 1000);
+                        });
+                    });
+                });
+            }
+
+            $("#main-menu").click(function() {
+                location.reload();
+            });
+        });
+    </script>
 </body>
 </html>
