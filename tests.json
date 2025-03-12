@@ -7,7 +7,7 @@
             "Nazorat va boshqaruv hisobi",
             "Operativ va moliyaviy hisobi"
         ],
-        "togri": 0
+        "togri": "Moliyaviy va boshqaruv hisobi"
     },
     {
         "savol": "Hisob uslublariga nimalar kiradi?",
@@ -17,7 +17,7 @@
             "Baholash, hujjatlashtirish, hisob registrlari, balans usuli",
             "Buxgalteriya siyosatini ishlab chiqish"
         ],
-        "togri": 2
+        "togri": "Baholash, hujjatlashtirish, hisob registrlari, balans usuli"
     },
     {
         "savol": "Moliyaviy hisobotning asosiy maqsadi nima?",
@@ -27,7 +27,7 @@
             "Xodimlarning ish haqi to‘lovlarini nazorat qilish",
             "Korxona rentabelligini oshirish"
         ],
-        "togri": 1
+        "togri": "Moliyaviy natijalarni tahlil qilish va taqdim etish"
     },
     {
         "savol": "Buxgalteriya hisobida amortizatsiya nima?",
@@ -37,7 +37,7 @@
             "Soliq stavkasini belgilash",
             "Mavjud mablag‘larni hisobga olish"
         ],
-        "togri": 0
+        "togri": "Asosiy vositalarning qiymatini kamaytirish jarayoni"
     },
     {
         "savol": "Xo‘jalik hisobining qanday turlari mavjud?",
@@ -47,7 +47,7 @@
             "Operativ-texnik, statistik va buxgalterlik",
             "Operativ texnik va statistik"
         ],
-        "togri": 2
+        "togri": "Operativ-texnik, statistik va buxgalterlik"
     },
     {
         "savol": "Hisobda qanday o‘lchov birliklari qo‘llaniladi?",
@@ -57,7 +57,7 @@
             "Natura va mehnat",
             "Mehnat va pul"
         ],
-        "togri": 0
+        "togri": "Mehnat, natura, pul"
     },
     {
         "savol": "Buxgalteriya hisobi qanday printsiplarga asoslanadi?",
@@ -67,7 +67,7 @@
             "O‘zgaruvchanlik, rejalilik, bevositalik",
             "Moliyaviy natija, me’yoriy hujjatlar, joriy tahlil"
         ],
-        "togri": 0
+        "togri": "Iqtisodiy mazmun, hujjatlashtirish, uzluksizlik"
     },
     {
         "savol": "Xo‘jalik hisobi deganda nima tushuniladi?",
@@ -77,7 +77,7 @@
             "Kuzatish, o‘lchash ma’lumotlarni to‘plash",
             "Xo‘jalik hisobi – bu operativ hisob"
         ],
-        "togri": 2
+        "togri": "Kuzatish, o‘lchash ma’lumotlarni to‘plash"
     },
     {
         "savol": "Buxgalteriya balansining asosiy elementi nima?",
@@ -87,7 +87,7 @@
             "Daromadlar, xarajatlar, foyda",
             "Soliq qarzlari, subyektlar, auditorlik tekshiruvi"
         ],
-        "togri": 0
+        "togri": "Aktivlar, majburiyatlar, kapital"
     },
     {
         "savol": "Buxgalteriya hisobining asosiy vazifasi nima?",
@@ -97,7 +97,7 @@
             "Xodimlar mehnat faoliyatini baholash",
             "Bozor sharoitlarini tahlil qilish"
         ],
-        "togri": 0
+        "togri": "Korxona xo‘jalik operatsiyalarini to‘g‘ri aks ettirish"
     },
     {
         "savol": "Buxgalteriya hisobida qaysi hujjatlar ishlatiladi?",
@@ -107,6 +107,6 @@
             "Schyot-faktura, to‘lov topshiriqnomasi, kirim va chiqim orderlari",
             "Reklama materiallari, katalog, veb-sayt ma’lumotlari"
         ],
-        "togri": 2
+        "togri": "Schyot-faktura, to‘lov topshiriqnomasi, kirim va chiqim orderlari"
     }
 ]
