@@ -1,66 +1,60 @@
 from flask import Flask, jsonify, request
 import json
 import random
-import datetime
+import os
 
 app = Flask(__name__)
 
-# JSON fayldan testlarni yuklash
+# 📌 JSON fayldan testlarni yuklash
 def load_tests():
     with open("tests.json", "r", encoding="utf-8") as file:
         return json.load(file)
 
-user_results = []
-ranking_data = [
-    {"name": "Ali", "score": 8},
-    {"name": "Vali", "score": 7},
-    {"name": "Sardor", "score": 9},
-    {"name": "Madina", "score": 6},
-    {"name": "Dilnoza", "score": 10}
-]
+# 📌 Natijalarni saqlash uchun fayl
+RESULTS_FILE = "results.json"
 
-@app.route('/test', methods=['GET'])
-def get_test():
+# 📌 Natijalarni yuklash
+def load_results():
+    if not os.path.exists(RESULTS_FILE):
+        return []
+    with open(RESULTS_FILE, "r", encoding="utf-8") as file:
+        return json.load(file)
+
+# 📌 Natijalarni saqlash
+def save_results(results):
+    with open(RESULTS_FILE, "w", encoding="utf-8") as file:
+        json.dump(results, file, indent=4, ensure_ascii=False)
+
+# 📌 Testlarni olish (tasodifiy 10 ta)
+@app.route("/get_tests", methods=["GET"])
+def get_tests():
     tests = load_tests()
-    random_tests = random.sample(tests, min(10, len(tests)))
-    return jsonify(random_tests)
+    random.shuffle(tests)  # Testlarni aralashtiramiz
+    return jsonify(tests[:10])  # Faqat 10 tasini yuboramiz
 
-@app.route('/check_answer', methods=['POST'])
-def check_answer():
-    data = request.json
-    tests = load_tests()
+# 📌 Test natijalarini saqlash
+@app.route("/save_result", methods=["POST"])
+def save_result():
+    data = request.json  # Foydalanuvchi natijalarini olish
+    results = load_results()
+    results.append(data)
+    save_results(results)
+    return jsonify({"message": "Natijalar saqlandi!"})
 
-    index = data.get("index")
-    user_answer = data.get("answer")
+# 📌 Foydalanuvchining natijalari
+@app.route("/my_results", methods=["GET"])
+def my_results():
+    results = load_results()
+    return jsonify(results)
 
-    if index is None or user_answer is None:
-        return jsonify({"error": "Invalid request"}), 400
+# 📌 TOP 10 reyting
+@app.route("/top10", methods=["GET"])
+def top10():
+    results = load_results()
+    sorted_results = sorted(results, key=lambda x: x["score"], reverse=True)  # Ballar bo‘yicha saralash
+    return jsonify(sorted_results[:10])  # Faqat TOP 10 natijalar
 
-    correct_answer = tests[index]["togri"]
-    is_correct = (user_answer == correct_answer)
-
-    return jsonify({"correct": is_correct, "correct_answer": correct_answer})
-
-@app.route('/results', methods=['GET'])
-def get_results():
-    return jsonify(user_results)
-
-@app.route('/ranking', methods=['GET'])
-def get_ranking():
-    sorted_ranking = sorted(ranking_data, key=lambda x: x["score"], reverse=True)[:10]
-    return jsonify(sorted_ranking)
-
-@app.route('/submit_result', methods=['POST'])
-def submit_result():
-    data = request.json
-    score = data.get("score", 0)
-
-    user_results.append({
-        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "score": score
-    })
-    
-    return jsonify({"message": "Natija saqlandi!"}), 200
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# 📌 Ilovani ishga tushirish
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Render avtomatik port belgilashi uchun
+    app.run(host="0.0.0.0", port=port, debug=True)
