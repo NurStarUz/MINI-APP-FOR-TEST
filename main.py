@@ -23,4 +23,4 @@ def ranking():
     return jsonify({"message": "TOP10 reyting"})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(host='0.0.0.0',port=10000)
