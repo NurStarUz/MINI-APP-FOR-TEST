@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
-            background-color: #1c1c1e; /* Qorong'i fon */
+            background-color: #1c1c1e;
             color: white;
         }
         h1 {
@@ -48,10 +48,10 @@
             width: 200px;
         }
         .correct {
-            background-color: #34c759 !important; /* Yashil */
+            background-color: #34c759 !important;
         }
         .wrong {
-            background-color: #ff3b30 !important; /* Qizil */
+            background-color: #ff3b30 !important;
         }
     </style>
 </head>
@@ -70,10 +70,10 @@
         let tests = [];
 
         function startTest() {
-            fetch('/test')
+            fetch('/get_test')  // API endpoint to‘g‘rilandi
                 .then(response => response.json())
                 .then(data => {
-                    tests = data;
+                    tests = [data]; // Faqat bitta test keladi
                     currentTestIndex = 0;
                     showQuestion();
                 })
@@ -81,11 +81,6 @@
         }
 
         function showQuestion() {
-            if (currentTestIndex >= tests.length) {
-                document.getElementById("test-container").innerHTML = "<p>Barcha testlar tugadi!</p>";
-                return;
-            }
-
             let testDiv = document.getElementById("test-container");
             testDiv.innerHTML = "";
 
@@ -99,7 +94,7 @@
                 btn.innerText = variant;
                 btn.className = "answer-btn";
                 btn.onclick = function() {
-                    checkAnswer(btn, variant, savol.togri);
+                    checkAnswer(btn, variant, savol.variantlar[savol.togri]); // To‘g‘ri javobni indeks bo‘yicha olish
                 };
                 savolDiv.appendChild(btn);
             });
@@ -111,20 +106,19 @@
             let allButtons = document.querySelectorAll(".answer-btn");
 
             allButtons.forEach(button => {
-                button.disabled = true; // Tugmalarni bloklash
+                button.disabled = true;
                 if (button.innerText === togri) {
-                    button.classList.add("correct"); // To'g'ri javob yashil bo'ladi
+                    button.classList.add("correct");
                 }
             });
 
             if (tanlangan !== togri) {
-                btn.classList.add("wrong"); // Noto‘g‘ri javob qizil bo‘ladi
+                btn.classList.add("wrong");
             }
 
             setTimeout(() => {
-                currentTestIndex++;
-                showQuestion();
-            }, 1000); // 1 soniyadan keyin keyingi savolga o'tadi
+                startTest(); // Yangi test olish uchun API chaqiramiz
+            }, 1000);
         }
 
         function viewResults() {
