@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -9,8 +10,8 @@ def index():
 @app.route('/test')
 def get_test():
     tests = [
-        {"id": 1, "savol": "2 + 2?", "variantlar": ["3", "4", "5"], "to‘g‘ri": "4"},
-        {"id": 2, "savol": "3 + 5?", "variantlar": ["7", "8", "9"], "to‘g‘ri": "8"},
+        {"id": 1, "savol": "2 + 2?", "variantlar": ["3", "4", "5"], "togri": "4"},
+        {"id": 2, "savol": "3 + 5?", "variantlar": ["7", "8", "9"], "togri": "8"},
     ]
     return jsonify(tests)
 
@@ -23,4 +24,5 @@ def ranking():
     return jsonify({"message": "TOP10 reyting"})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=10000)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
