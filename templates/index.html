@@ -3,115 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Platformasi</title>
+    <title>Test Sinovi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
             text-align: center;
+            background-color: #f4f4f4;
         }
-        .question-container {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
             border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question-box {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .options button:hover {
+            background-color: #2980b9;
         }
         .correct {
-            background-color: #a8e6a8;
+            background-color: lightgreen !important;
         }
-        .incorrect {
-            background-color: #f5a8a8;
+        .wrong {
+            background-color: lightcoral !important;
         }
-        .option {
-            display: block;
-            margin: 5px 0;
-            padding: 10px;
-            cursor: pointer;
-            border: 1px solid #ccc;
+        #next-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
             border-radius: 5px;
-            transition: background 0.3s;
+            cursor: pointer;
+            display: none;
         }
-        .option:hover {
-            background-color: #f0f0f0;
+        #next-btn:hover {
+            background-color: #27ae60;
         }
         #result {
-            font-size: 20px;
+            font-size: 24px;
+            font-weight: bold;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Testni boshlash</h1>
-    <button onclick="startTest()">Testni boshlash</button>
-    
-    <div id="test-container"></div>
-    <p id="result"></p>
+    <div class="container">
+        <h1>Test Sinovi</h1>
+        <div class="question-box" id="question">Savol yuklanmoqda...</div>
+        <div class="options" id="options"></div>
+        <button id="next-btn" onclick="loadQuestion()">Keyingi savol</button>
+        <div id="result"></div>
+    </div>
 
     <script>
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let questions = [];
+        let currentQuestion = 0;
+        let correctAnswers = 0;
 
-        async function startTest() {
-            const response = await fetch('/get_tests');
-            questions = await response.json();
-            currentQuestionIndex = 0;
-            score = 0;
-            document.getElementById('result').innerText = "";
-            showQuestion();
-        }
-
-        function showQuestion() {
-            if (currentQuestionIndex >= questions.length) {
-                showResult();
-                return;
-            }
-
-            let question = questions[currentQuestionIndex];
-            let container = document.getElementById('test-container');
-            container.innerHTML = `
-                <div class="question-container">
-                    <h3>${question.savol}</h3>
-                    ${question.variantlar.map(option => 
-                        `<div class="option" onclick="checkAnswer('${option}', '${question.togri}', this)">${option}</div>`
-                    ).join('')}
-                </div>
-            `;
-        }
-
-        function checkAnswer(selected, correct, element) {
-            let options = document.querySelectorAll('.option');
-            options.forEach(opt => opt.style.pointerEvents = 'none');
-
-            if (selected === correct) {
-                element.classList.add('correct');
-                score++;
-            } else {
-                element.classList.add('incorrect');
-                options.forEach(opt => {
-                    if (opt.innerText === correct) {
-                        opt.classList.add('correct');
+        function loadQuestion() {
+            document.getElementById("next-btn").style.display = "none";
+            fetch("/get_question")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.natija !== undefined) {
+                        document.querySelector(".container").innerHTML = `
+                            <h1>Test tugadi!</h1>
+                            <p>Siz <strong>${data.natija}</strong> ta to‘g‘ri javob berdingiz.</p>
+                        `;
+                    } else {
+                        document.getElementById("question").textContent = data.index + ". " + data.savol;
+                        let optionsDiv = document.getElementById("options");
+                        optionsDiv.innerHTML = "";
+                        data.variantlar.forEach((option, index) => {
+                            let btn = document.createElement("button");
+                            btn.textContent = option;
+                            btn.className = "option";
+                            btn.onclick = () => submitAnswer(option, index, data.togri);
+                            optionsDiv.appendChild(btn);
+                        });
                     }
                 });
+        }
+
+        function submitAnswer(selected, selectedIndex, correctIndex) {
+            let buttons = document.querySelectorAll(".option");
+            buttons.forEach((btn, index) => {
+                btn.style.pointerEvents = "none";
+                if (index === correctIndex) {
+                    btn.classList.add("correct");
+                }
+                if (index === selectedIndex && index !== correctIndex) {
+                    btn.classList.add("wrong");
+                }
+            });
+
+            if (selectedIndex === correctIndex) {
+                correctAnswers++;
             }
 
-            setTimeout(() => {
-                currentQuestionIndex++;
-                showQuestion();
-            }, 1000);
+            document.getElementById("next-btn").style.display = "block";
         }
 
-        function showResult() {
-            document.getElementById('test-container').innerHTML = "";
-            document.getElementById('result').innerText = `Sizning natijangiz: ${score} / ${questions.length}`;
-
-            fetch('/save_result', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ score: score })
-            }).then(res => res.json()).then(data => console.log(data));
-        }
+        window.onload = loadQuestion;
     </script>
 
 </body>
