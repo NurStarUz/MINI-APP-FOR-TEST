@@ -2,38 +2,58 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>Test ishlash</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h2>Savol {{ question_num }}</h2>
-        <p>{{ question.question }}</p>
-        <form id="test-form">
-            {% for i in range(question.options|length) %}
-                <button type="button" class="option" onclick="submitAnswer({{ i }})">{{ question.options[i] }}</button>
-            {% endfor %}
-        </form>
-    </div>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
     <script>
-        function submitAnswer(selectedOption) {
-            fetch("{{ url_for('test') }}", {
+        let index = 0;
+        let tests = {{ tests|tojson }};
+
+        function selectAnswer(answer) {
+            fetch("/check_answer", {
                 method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: "answer=" + selectedOption
+                body: JSON.stringify({index: index, user_answer: answer}),
+                headers: {"Content-Type": "application/json"}
             })
             .then(response => response.json())
             .then(data => {
-                if (data.feedback === "correct") {
-                    document.getElementsByClassName("option")[selectedOption].style.backgroundColor = "green";
-                } else {
-                    document.getElementsByClassName("option")[selectedOption].style.backgroundColor = "red";
-                    document.getElementsByClassName("option")[data.correct_option].style.backgroundColor = "green";
-                }
-                setTimeout(() => { window.location.reload(); }, 1000);
+                let correct = data.result.correct;
+                let correctAnswer = data.result.correct_answer;
+                let buttons = document.querySelectorAll(".answer");
+                buttons[correctAnswer].style.backgroundColor = "green";
+                if (!correct) buttons[answer].style.backgroundColor = "red";
+
+                setTimeout(() => {
+                    if (data.next_index !== null) {
+                        index = data.next_index;
+                        loadQuestion();
+                    } else {
+                        location.href = "/results";
+                    }
+                }, 1000);
             });
         }
+
+        function loadQuestion() {
+            let question = tests[index];
+            document.getElementById("question").innerText = question.savol;
+            let buttons = document.querySelectorAll(".answer");
+            buttons.forEach((btn, i) => {
+                btn.innerText = question.variantlar[i];
+                btn.style.backgroundColor = "#ddd";
+                btn.onclick = () => selectAnswer(i);
+            });
+        }
+
+        window.onload = loadQuestion;
     </script>
+</head>
+<body>
+    <div>
+        <h2 id="question"></h2>
+        <button class="answer"></button>
+        <button class="answer"></button>
+        <button class="answer"></button>
+        <button class="answer"></button>
+    </div>
 </body>
 </html>
