@@ -2,99 +2,16 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Sinovi</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .start-btn { background-color: green; color: white; }
-        .answer-btn { background-color: lightgray; color: black; }
-        .correct { background-color: #28a745 !important; color: white; }
-        .incorrect { background-color: #dc3545 !important; color: white; }
-        .hidden { display: none; }
-    </style>
+    <title>NurStar Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>Test Sinovi</h1>
-        <button class="btn start-btn" id="start">Testni boshlash</button>
-        <div id="question-container" class="hidden">
-            <h2 id="question"></h2>
-            <div id="answers"></div>
-        </div>
-        <div id="result-container" class="hidden">
-            <h2 id="result-text"></h2>
-            <button class="btn start-btn" id="main-menu">Asosiy menyuga qaytish</button>
-        </div>
+        <h1>NurStar</h1>
+        <p>TDAU Buxgalteriya hisobi va audit 21-100ST</p>
+        <a href="{{ url_for('start_test', num_questions=10) }}" class="button">TEST 10</a>
+        <a href="{{ url_for('start_test', num_questions=50) }}" class="button">TEST 50</a>
+        <a href="{{ url_for('results') }}" class="button">NATIJALARIM</a>
     </div>
-
-    <script>
-        let currentQuestionIndex = 0;
-        let totalCorrect = 0;
-
-        $(document).ready(function() {
-            $("#start").click(function() {
-                $.post("/start_test", function() {
-                    $("#start").hide();
-                    $("#question-container").removeClass("hidden");
-                    loadQuestion();
-                });
-            });
-
-            function loadQuestion() {
-                $.get("/get_question", function(data) {
-                    if ("natija" in data) {
-                        $("#question-container").addClass("hidden");
-                        $("#result-container").removeClass("hidden");
-                        $("#result-text").text("Test tugadi! Siz " + data.natija + " ta to‘g‘ri javob berdingiz.");
-                        return;
-                    }
-                    $("#question").text(data.savol);
-                    $("#answers").empty();
-                    data.variantlar.forEach((answer, index) => {
-                        $("#answers").append(`<button class="btn answer-btn" data-index="${index}">${answer}</button>`);
-                    });
-
-                    $(".answer-btn").click(function() {
-                        let selectedAnswer = $(this).text();
-                        $.post("/submit_answer", JSON.stringify({ answer: selectedAnswer }), "json")
-                        .done(function(response) {
-                            $(".answer-btn").prop("disabled", true);
-                            $(".answer-btn").eq(response.correct_index).addClass("correct");
-                            if (response.selected_index !== response.correct_index) {
-                                $(".answer-btn").eq(response.selected_index).addClass("incorrect");
-                            }
-                            setTimeout(loadQuestion, 1000);
-                        });
-                    });
-                });
-            }
-
-            $("#main-menu").click(function() {
-                location.reload();
-            });
-        });
-    </script>
 </body>
 </html>
