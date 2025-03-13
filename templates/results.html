@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Natijalar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Sizning natijangiz</h2>
+        <p>{{ score }} / {{ total }} to‘g‘ri javob</p>
+        <a href="{{ url_for('index') }}" class="button">Asosiy menyu</a>
+    </div>
+</body>
+</html>
