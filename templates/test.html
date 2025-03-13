@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Test ishlash</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Savol {{ question_num }}</h2>
+        <p>{{ question.question }}</p>
+        <form id="test-form">
+            {% for i in range(question.options|length) %}
+                <button type="button" class="option" onclick="submitAnswer({{ i }})">{{ question.options[i] }}</button>
+            {% endfor %}
+        </form>
+    </div>
+
+    <script>
+        function submitAnswer(selectedOption) {
+            fetch("{{ url_for('test') }}", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "answer=" + selectedOption
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.feedback === "correct") {
+                    document.getElementsByClassName("option")[selectedOption].style.backgroundColor = "green";
+                } else {
+                    document.getElementsByClassName("option")[selectedOption].style.backgroundColor = "red";
+                    document.getElementsByClassName("option")[data.correct_option].style.backgroundColor = "green";
+                }
+                setTimeout(() => { window.location.reload(); }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
