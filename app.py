@@ -1,63 +1,57 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, jsonify, session
 import json
 import random
 
 app = Flask(__name__)
-app.secret_key = "nurstar_secret_key"
+app.secret_key = "nustar_secret"  # Sessiya uchun
 
-# Testlarni yuklash
+# JSON fayldan testlarni yuklash
 def load_tests():
     with open("tests.json", "r", encoding="utf-8") as file:
         return json.load(file)
 
-# Bosh sahifa
 @app.route("/")
 def index():
     return render_template("index.html")
 
-# Testni boshlash (10 yoki 50 talik)
-@app.route("/start_test/<int:num_questions>")
-def start_test(num_questions):
-    tests = load_tests()
-    session["questions"] = random.sample(tests, num_questions)
-    session["current_question"] = 0
-    session["correct_answers"] = 0
-    return redirect(url_for("test"))
+@app.route("/start_test/<int:test_count>")
+def start_test(test_count):
+    all_tests = load_tests()
+    selected_tests = random.sample(all_tests, min(test_count, len(all_tests)))  # Tasodifiy testlar
+    session["tests"] = selected_tests
+    session["results"] = []
+    return render_template("test.html", tests=selected_tests, index=0)
 
-# Test savollarini chiqarish
-@app.route("/test", methods=["GET", "POST"])
-def test():
-    if "questions" not in session or session["current_question"] >= len(session["questions"]):
-        return redirect(url_for("results"))
+@app.route("/check_answer", methods=["POST"])
+def check_answer():
+    data = request.json
+    index = data["index"]
+    user_answer = int(data["user_answer"])
 
-    question_data = session["questions"][session["current_question"]]
+    tests = session.get("tests", [])
+    correct_answer = tests[index]["togri"]
 
-    if request.method == "POST":
-        selected_option = int(request.form["answer"])
-        correct_option = question_data["answer"]
+    result = {
+        "correct": user_answer == correct_answer,
+        "correct_answer": correct_answer
+    }
 
-        if selected_option == correct_option:
-            session["correct_answers"] += 1
-            feedback = "correct"
-        else:
-            feedback = "incorrect"
+    session["results"].append(result)
+    
+    if index + 1 < len(tests):
+        return jsonify({"next_index": index + 1, "result": result})
+    else:
+        return jsonify({"next_index": None, "result": result})
 
-        session["current_question"] += 1
-        return jsonify({"feedback": feedback, "correct_option": correct_option})
-
-    return render_template("test.html", question=question_data, question_num=session["current_question"] + 1)
-
-# Natijalar
 @app.route("/results")
 def results():
-    score = session.get("correct_answers", 0)
-    total = len(session.get("questions", []))
-    return render_template("results.html", score=score, total=total)
+    results = session.get("results", [])
+    return render_template("results.html", results=results)
 
-# API - Testlarni olish
-@app.route("/api/tests", methods=["GET"])
-def api_tests():
-    return jsonify(load_tests())
+@app.route("/rating")
+def rating():
+    # Bu joyda foydalanuvchi reytingi saqlanadigan baza kerak
+    return render_template("rating.html", rankings=[])
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
