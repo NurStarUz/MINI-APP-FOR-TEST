@@ -2,14 +2,18 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natijalar</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h2>Sizning natijangiz</h2>
-        <p>{{ score }} / {{ total }} to‘g‘ri javob</p>
-        <a href="{{ url_for('index') }}" class="button">Asosiy menyu</a>
-    </div>
+    <h1>Natijalarim</h1>
+    <ul>
+        {% for result in results %}
+        <li style="color: {% if result.correct %}green{% else %}red{% endif %}">
+            {{ "To'g'ri" if result.correct else "Noto'g'ri" }}
+        </li>
+        {% endfor %}
+    </ul>
+    <button onclick="location.href='/'">Asosiy menyu</button>
 </body>
 </html>
