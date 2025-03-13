@@ -2,16 +2,18 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>NurStar Test</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NurStar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>NurStar</h1>
         <p>TDAU Buxgalteriya hisobi va audit 21-100ST</p>
-        <a href="{{ url_for('start_test', num_questions=10) }}" class="button">TEST 10</a>
-        <a href="{{ url_for('start_test', num_questions=50) }}" class="button">TEST 50</a>
-        <a href="{{ url_for('results') }}" class="button">NATIJALARIM</a>
+        <button onclick="location.href='/start_test/10'">TEST 10</button>
+        <button onclick="location.href='/start_test/50'">TEST 50</button>
+        <button onclick="location.href='/results'">NATIJALARIM</button>
+        <button onclick="location.href='/rating'">REYTING</button>
     </div>
 </body>
 </html>
