@@ -1,0 +1,362 @@
+[
+    {
+        "savol": "5610-“Pul ekvivalentlari” scho‘tida pul ekvivalentlari qaysi qiymatda hisobga olinadi?",
+        "variantlar": [
+            "Nominal qiymatida.",
+            "Bozor qiymatida.",
+            "Xarid qiymatida.",
+            "Xarid yoki bozor qiymatining eng kam qiymatida"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Hisob-kitob scho‘tidan pul o‘tkazish yo‘li bilan pul ekvivalentlari xarid qilinganida",
+        "variantlar": [
+            "D-t 5610-“Pul ekvivalentlari” scho‘ti , K-t 5110-“Hisobkitob scho‘ti”",
+            "D-t 5110-“Hisob-kitob scho‘ti”, K-t 5610-“Pul ekvivalentlari” scho‘ti",
+            "D-t 5610-“Pul ekvivalentlari” scho‘ti , K-t 5010-“Milliy valyutadagi pul mablag‘lari” scho‘ti",
+            "Dt 5010-“Millimy valyutadagi pul mablag‘alri” scho‘ti, K-t 5610-“Pul ekvivalentlari"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Vaqtida olinmagan ish haqi deponentga o‘tkazilganda qanday buxgalteriya provodkasi tuziladi?",
+        "variantlar": [
+            "Dt 6710-“Mehnat haqi bo‘yicha xodimlar bilan hisoblashishlar” scho‘ti Kt 6720-“Deponentlangan ish haqi” scho‘ti",
+            "Dt 6720-“Deponentlangan ish haqi» scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 4210-“Mehnat haqi bo‘yicha berilgan bo‘naklar” scho‘ti scho‘ti Kt 6720-“Deponentlangan ish haqi” scho‘ti",
+            "Dt 4210-“Mehnat haqi bo‘yicha berilgan bo‘naklar” scho‘ti 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Ish haqidan daromad solig‘i ushlanganda qanday buxgalteriya yozuvi qilinadi?",
+        "variantlar": [
+            "Dt 6710-“Mehnat haqi bo‘yicha xodimlar bilan hisoblashishlar” scho‘ti Kt 6410-“Byudjetga to‘lovlar bo‘yicha qarzlar” scho‘ti",
+            "Dt 6720-“Deponentlangan ish haqi” scho‘ti Kt 6410-“Byudjetga to‘lovlar bo‘yicha qarzlar” scho‘ti",
+            "Dt 6510-“Sug‘urta bo‘yicha to‘lovlar” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 6710- «Mehnat haqi bo‘yicha xodimlar bilan hisoblashishlar» scho‘ti Kt 6520-“Maqsadli davlat jamg‘armalariga to‘lovlar” scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Korxonada xodimlar mehnat ta’tiliga haq to‘lash uchun rezerv yaratilganida qanday buxgalteriya yozuvi amalga oshiriladi?",
+        "variantlar": [
+            "Dt Xarajatlarni hisobga oluvchi scho‘tlar (2010, 2310, 2510, 9410, 9420 va boshqa) Kt 8910-“Kelgusi to‘lovlar va xarajatlar uchun rezerv” scho‘ti",
+            "Dt 6710-“Mehnat haqi bo‘yicha xodimlar bilan hisoblashishlar” scho‘ti Kt 6510-“Sug‘urta bo‘icha to‘lovlar” scho‘ti",
+            "Dt 6710-“Mehnat haqi bo‘yicha xodimlar bilan hisoblashishlar” scho‘ti Kt 6410-“Byudjetga to‘lovlar bo‘yicha qarz” scho‘ti",
+            "Dt 6720-“Deponentlangan ish haqi” scho‘tiKt 6520“Maqsadli davlat jamg‘armalariga to‘lovlar” scho‘ti"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Mehnatga haq to‘lashning qanday asosiy shakllari bor?",
+        "variantlar": [
+            "Vaqtbay, ishbay",
+            "Akkord, ta’til",
+            "Avans, mukofot",
+            "Oshirilgan, oklad"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Asosiy ishlab chiqarishda mehnat qilayotgan xodimlarga ish haqi hisoblanganda qanday buxgateriya provodkasi tuziladi:",
+        "variantlar": [
+            "Dt 2010 - «Asosiy ishlab chiqarish» scho‘ti-“Asosiy ishlab chiqarish” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 2510 - «Umum ishlab chiqarish xarajatlari» scho‘ti -“Umumishlab chiqarish” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 9420 - «Ma’muriy xarajatlar» scho‘ti-“Ma’muriy xarajatlar” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 0810-“Tugallanmagan qurilish” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Mehnatga haq hisoblash uchun asos bo‘ladigan hujjatlar qaysi javobda to‘g‘ri ko‘rsatilgan:",
+        "variantlar": [
+            "Tabel, naryad, mehnatni va bajarilgan ishlarni hisobga olish varaqasi",
+            "Yuk xati, scho‘t-faktura, ishonchnoma, talabnoma",
+            "Sog‘ilgan sutni hisobga olish jurnali, tortish vedomosti, to‘lov-topshiriqnomasi, yo‘l varaqasi",
+            "Kirim orderi, tovar transprot yuk xati, bildirishnoma, dalolatnoma"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Mehnatga haq hisoblash, undan ushlanadigan summalar va xodim qo‘lga oladigan ish haqi qaysi hujjatda hisob-kitob qilinadi:",
+        "variantlar": [
+            "Hisob-kitob to‘lov vedomosti yoki mehnat haqi bo‘yicha hisob-kitoblar daftari",
+            "To‘lov vedomosti yoki naryad",
+            "Tabel yoki mehnatni va bajarilgan ishlarni hisobga olish vedomosti",
+            "Kassa daftari yoki kassa kirim va chiqim orderlarini qayd qilish jurnali"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Rahbar va buxgalterlarga ish haqi hisoblanganda qanday buxgalteriya yozuvi tuziladi:",
+        "variantlar": [
+            "Dt 9420 - «Ma’muriy xarajatlar» scho‘ti-“Ma’muriy xarajalar” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 9430-“Boshqa operatsion xarajatlar” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 2010 - «Asosiy ishlab chiqarish» scho‘ti-“Asosiy ishlab chiqarish” scho‘ti Kt 6710-“Xodilar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "Dt 2310 - «Yordamchi ishlab chiqarish» scho‘ti-“YoRdamchi ishlab chiqarish” scho‘ti Kt 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Korxona xodimlariga mehnat ta’tili uchun yaratilgan rezerv hisobidan ta’til uchun haq hisoblanganida qanday buxgalteriya yozuvi amalga oshiriladi?",
+        "variantlar": [
+            "D-t 8910 - “Kelgusi to‘lovlar va xarajatlar uchun rezerv” scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "D-t 9410-“Sotish xarajatlari” scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "D-t 9420 - «Ma’muriy xarajatlar» scho‘ti-“Ma’muriy xarajatlar” scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "D-t 2010 - «Asosiy ishlab chiqarish» scho‘ti-“Asosiy ishlab chiqarish” scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Korxona xodimiga kasallik varaqasi bo‘yicha vaqtincha mehnatga layoqatsizlik uchun haq hisoblanganida qanday buxgalteriya yozuvi amalga oshiriladi?",
+        "variantlar": [
+            "D-t 9430 - «Boshqa operatsion xarajatlar» scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "D-t 9410-“Sotish xarajatlar” scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "D-t 2510 - «Umum ishlab chiqarish xarajatlari» scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti",
+            "D-t 2310 - «Yordamchi ishlab chiqarish» scho‘ti, K-t 6710-“Xodimlar bilan mehnat haqi bo‘yicha hisoblashishlar” scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Xizmat safari bo‘yicha muomalalar qaysi me’yoriy-huquqiy hujjatlar bilan tartibga solinadi:",
+        "variantlar": [
+            "“O‘zbekiston Respublikasi ichkarisidagi xizmat safarlari to‘g‘risida yo‘riqnoma”, “Vazirlar, idoralar, korxonalar va tashkilotlar xodimlari O‘zbekiston Respublikasi tashqarisiga xizmat safariga yuborilganda xizmat safari xarajatlari uchun mablag‘lar berish tartibi”",
+            "“Buxgalteriya hisobi to‘g‘risidagi Nizom”, “Yuridik shaxslar tomonidan kassa operatsiyalarini amalga oshirish qoidalari”",
+            "“O‘zbekiston Respublikasida naqd pulsiz hisob-kitoblar to‘g‘risida Nizom”, “Mahsulot (ish, xizmat)larni ishlab chiqarish va sotish xarajatlarining tarkibi hamda moliyaviy natijalarni shakllantirish tartibi to‘g‘risidagi nizom”",
+            "“O‘zbekiston Respublikasi ichkarisidagi xizmat safarlari to‘g‘risida yo‘riqnoma”, “Choraklik va yillik moliyaviy hisobotlarni taqdim etish muddatlari to‘g‘risidagi Nizom”"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Hisobdor shaxslar bilan hisob-kitoblarda qo‘llaniladigan hisob-kitoblarda qo‘llaniladigan hujjatlar qaysi javobda to‘g‘ri ko‘rsatilgan:",
+        "variantlar": [
+            "Ariza, buyruq, avans hisoboti, xizmat safari varaqasi",
+            "Bildirgi, ishonchnoma, kassir hisoboti, xizmat safari guvohnomasi",
+            "Bayonnoma, yuk xati, material hisoboti, xizmat safari varaqasi",
+            "Dalolatnoma, yo‘l varaqasi, ombor hisoboti, xizmat safari guvohnomasi"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Hisobdor shaxslar tomonidan olingan bo‘naklar bo‘yicha “Bo‘nak hisoboti” kim tomonidan tekshiriladi va tasdiqlanadi?",
+        "variantlar": [
+            "Korxona bosh buxgalteri",
+            "Korxona rahbari",
+            "Bo‘nak hisobotiga asoslovchi hujjatlar ilova qilinadi hamda uni tekshirish shart emas.",
+            "Kassir"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Hisobdor shaxslarga kassadan xizmat safari uchun bo‘nak (avans) berilganda qanday buxgalteriya yozuvi tuziladi:",
+        "variantlar": [
+            "Dt 4220-“Xizmat safarlariga berilgan bo‘naklar” scho‘ti Kt 5010-“Milliy valyutadagi pul mablag‘lari” scho‘ti",
+            "Dt 4230-“Umumxo‘jalik xarajatlari uchun berilgan bo‘naklar” scho‘ti Kt 5110- «Hisob-kitob scho‘ti»",
+            "Dt 4290-“Xodimlarga berigan boshqa bo‘naklar” scho‘ti Kt 5210-“Mamlakat ichidagi valyuta scho‘ti”",
+            "Dt 5010-“Milliy valyutadagi pul mablag‘lari” scho‘ti, Kt 4220-“Xizmat safarlariga berilgan bo‘naklar” scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Hisobdor shaxslar olgan bo‘nak davr xarajatiga o‘tkazilganda qanday buxgalteriya provodkasi tuziladi:",
+        "variantlar": [
+            "Dt 9420 - «Ma’muriy xarajatlar» scho‘ti-“Ma’muriy xarajatlar” scho‘ti, Kt 4220 - «Xizmat safarlariga berilgan bo‘naklar» scho‘ti",
+            "Dt 9420 - «Ma’muriy xarajatlar» scho‘ti-“Ma’muriy xarajatlar” scho‘ti, Kt 6970-“Hisobdor shaxslarga bo‘lgan qarz” scho‘ti",
+            "Dt 4220-“Xizmat safarlariga berilgan bo‘naklar” scho‘ti Kt 5010-“Milliy valyutadagi pul mablag‘lari” scho‘ti",
+            "Dt 4220-“Xizmat safarlariga berilgan bo‘naklar» scho‘ti Kt 6970-“Hisobdor shaxslarga bo‘lgan qarz” scho‘ti"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Xizmat safari xarajatlari yuzasidan hisobdor shaxslarga korxona qarz bo‘lib qolganda qanday buxgalteriya yozuvi qilinadi:",
+        "variantlar": [
+            "Dt 4220 - «Xizmat safarlariga berilgan bo‘naklar» scho‘ti Kt 6970 – “Hisobdor shaxslarga bo‘lgan qarz” scho‘ti",
+            "Dt 4230 – “Umumxo‘jalik xarajatlari uchun berilgan bo‘naklar” scho‘ti Kt 6990- «Boshqa majburiyatlar» scho‘ti",
+            "Dt 4290- «Xodimlarga berigan boshqa bo‘naklar» scho‘ti Kt 6910- «To‘lanadigan oprativ ijara» scho‘ti",
+            "Dt 6970 – “Hisobdor shaxslarga bo‘lgan qarz” scho‘ti Kt 4220 - «Xizmat safarlariga berilgan bo‘naklar» scho‘ti"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Mahsulotlar uchun xaridorlardan bo‘nak (avans) kelib tushganda qanday buxgalteriya yozuvi tuziladi:",
+        "variantlar": [
+            "Dt 5110- «Hisob-kitob scho‘ti» Kt 6310- «Xaridorlar va buyurtmachilardan olingan bo‘naklar» scho‘ti",
+            "Dt 5110- «Hisob-kitob scho‘ti» Kt 4010- «Xaridor va buyurtmachilardan olinadigan scho‘tlar» scho‘ti",
+            "Dt 5110- «Hisob-kitob scho‘ti» Kt 4310- «TMQlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar» scho‘ti",
+            "Dt 5110- «Hisob-kitob scho‘ti» Kt 4320- «Uzoq muddatli aktivlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar» scho‘ti"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Mol yetkazib bervchilarga berilgan bo‘naklar scho‘tining yopilishiga qanday scho‘tlar aloqasi tuziladi:",
+        "variantlar": [
+            "Dt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar» Kt 4310- «TMQlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar» scho‘ti",
+            "Dt 4310- «TMQlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar» scho‘ti Kt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar»",
+            "Dt 6310- «Xaridorlar va buyurtmachilardan olingan bo‘naklar» scho‘ti Kt 4010- «Xaridor va buyurtmachilardan olinadigan scho‘tlar» scho‘ti",
+            "Dt 6020 Kt 4010- «Xaridor va buyurtmachilardan olinadigan scho‘tlar» scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Mol yetkazib beruvchilar va pudratchilar qaysi qatorda to‘g‘ri ko‘rsatilgan:",
+        "variantlar": [
+            "Neftebaza, qishloq xo‘jalik kimyo, urug‘chilik xo‘jaliklari, avtobaza, MTP, qurilish tashkilotlari",
+            "Paxta tozalash zavodi va punktlari, don qabul qilish punktlari, meva-sabzavotlarni qabul qilish punktlari",
+            "Poliz ekinlarini qabul qilish punktlari, meva-sabzavot mahsulotlarini qabul qilish korxonalari, do‘konlar, MTP, avtobaza",
+            "Kimyo tashkiloti, o‘g‘it korxonalari, neftbaza, paxta tozalash punktlari, don qabul qilish punktlari, qurilish tashkilotlari"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Mol yetkazib beruvchilar materiallarni yuklab jo‘natganda qaysi hujjatlar asos bo‘ladi:",
+        "variantlar": [
+            "Shartnoma, tovar-transport yukxati, scho‘t-faktura",
+            "Shartnoma, yuk xati, to‘lov-topshiriqnomasi",
+            "Shartnoma, ishonchnoma, naqd pul topshirish haqidagi e’lon",
+            "Shartnoma, scho‘t-faktura, avans hisoboti"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Mol yetkazib beruvchilarga hisob-kitob scho‘tidan bo‘nak (avans) o‘tkazilganda qanday scho‘tlar aloqasi tuziladi:",
+        "variantlar": [
+            "Dt 4310-“TMQlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar” scho‘ti Kt 5110-“Hisob-kitob scho‘ti”",
+            "Dt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar» Kt 5210-“Mamlakat ichidagi valyuta scho‘ti”",
+            "Dt 4320-“Uzoq muddatli aktivlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar” scho‘ti Kt 5010-“Milliy valyutadagi pul mablag‘lari” scho‘ti",
+            "Dt 6020-“Berilgan veksellar” scho‘ti Kt 5110-“Hisob-kitob scho‘ti”"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Mol yetkazib beruvchilardan boquvga mollar sotib olinsa qanday buxgalteriya yozuvi tuziladi:",
+        "variantlar": [
+            "Dt 1120 - «Boquvdagi chorva mollari» scho‘ti Kt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar»",
+            "Dt 1120 - «Boquvdagi chorva mollari» scho‘ti Kt 2010 - «Asosiy ishlab chiqarish» scho‘ti-“Asosiy ishlab chiqarish” scho‘ti",
+            "Dt 1110-“O‘stiruvdagi chorva mollari” schekti Kt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar»",
+            "Dt 1120 - «Boquvdagi chorva mollari» scho‘ti Kt 2510 - «Umum ishlab chiqarish xarajatlari» scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Mol yetkazib beruvchilardan materiallar sotib olinib kirim qilinganda qanday buxgalteriya provodkasi tuziladi:",
+        "variantlar": [
+            "Dt 1000-“Materiallarni hisobga oluvchi scho‘tlar” (1010-1090)  Kt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar»",
+            "Dt 4300 - “Mol yetkazib beruvchi va pudratchilarga berilgan bo‘naklarni hisobga oluvchi scho‘tlar” (4310-4390) Kt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar»",
+            "Dt 6010 - “Mol yetkazib beruvchilar va pudratchilarga to‘lanadigan scho‘tlar” Kt 1000-“Materiallarni hisobga oluvchi scho‘tlar” (1010-1090)",
+            "Dt 1000-“Materiallarni hisobga oluvchi scho‘tlar” (1010-1090) Kt 4310-“TMQlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar” scho‘ti"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Xaridorlar va buyurtmachilar qaysi javobda to‘g‘ri ko‘rsatilgan:",
+        "variantlar": [
+            "Paxta tozalash zavodi va punktlari, don qabul qilish punktlari, meva-sabzavotlarni qabul qilish punktlari",
+            "Neftebaza, qishloq xo‘jalik kimyo, urug‘chilik xo‘jaliklari,Avtobaza, MTP, qurilish tashkilotlari",
+            "Poliz ekinlarini qabul qilish punktlari, meva-sabzavot mahsulotlarini qabul qilish korxonalari, do‘konlar, MTP, avtobaza",
+            "Kimyo tashkiloti, o‘g‘it korxonalari, neftbaza, paxta tozalash punktlari, don qabul qilish punktlari, qurilish tashkilotlari"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Xaridorlar va buyurtmachilar tomonidan mahsulotlar qabul qilib olinganda (shartnoma bahosida) qanday buxgalteriya yozuvi qilinadi:",
+        "variantlar": [
+            "Dt 4010-“Xaridor va buyurtmachilardan olinadigan scho‘tlar” scho‘ti Kt 9010-“Tayyor mahsulotlarni sotishdan daromadlar” scho‘ti",
+            "Dt 6310-“Xaridorlar va buyurtmachilardan olingan bo‘naklar” scho‘ti Kt 9010-“Tayyor mahsulotlarni sotishdan daromadlar” scho‘ti",
+            "Dt 9010-“Tayyor mahsulotlarni sotishdan daromadlar” scho‘ti Kt 4010-“Xaridor va buyurtmachilardan olinadigan scho‘tlar” scho‘ti",
+            "Dt 4010-“Xaridor va buyurtmachilardan olinadigan scho‘tlar” scho‘ti Kt 6310-“Xaridorlar va buyurtmachilardan olingan bo‘naklar” scho‘ti"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Hisob kitob-scho‘tidan mol yetkazib beruvchilarga pul o‘tkazilganda qanday buxgalteriya provodkasi tuziladi?",
+        "variantlar": [
+            "Dt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar» Kt 5110-“Hisob-kitob scho‘ti”",
+            "Dt 4310-“TMQlar uchun mol yetkazib beruvchilar va pudratchilarga berilgan bo‘naklar” scho‘ti Kt 5110-“Hisob-kitob scho‘ti”",
+            "Dt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar» Kt 5210-“Mamlakat ichidagi valyuta scho‘ti”",
+            "Dt 6010 - «Mol yetkazib beruvchi va pudratchilarga to‘lanadigan scho‘tlar» Kt 5510-“Akkreditiv” scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Hisob-kitob scho‘tiga xaridorlardan pul kelib tushganda qanday buxgalteriya yozuvi tuziladi:",
+        "variantlar": [
+            "Dt 5110-“Hisob-kitob scho‘ti” Kt 4010-“Xaridor va buyurtmachilardan olinadigan scho‘tlar”",
+            "Dt 4010-“Xaridor va buyurtmachilardan olinadigan scho‘tlar” Kt 5110-“Hisob-kitob scho‘ti”",
+            "Dt 5110-“Hisob-kitob scho‘ti” Kt 6310-“Xaridorlar va buyurtmachilardan olingan bo‘naklar”",
+            "Dt 5110-“Hisob-kitob scho‘ti” Kt 5510-“Akkreditiv” scho‘ti"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Debitor qarz ta’rifi qaysi javobda to‘g‘ri berilgan:",
+        "variantlar": [
+            "Korxonaning boshqa korxona va tashkilotlardan oladigan qarzi debitor qarz deyiladi.",
+            "Korxonaning boshqa korxona va tashkilotlarga beradigan qarzi debitor qarz deyiladi.",
+            "Korxonaning boshqa korxona va tashkilotlarga to‘laydigan qarzi debitor qarz deyiladi.",
+            "Korxonaning bank oldidagi qarzi debitor qarz deyiladi."
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Uzoq muddatli ijaraning joriy qismi aks ettirilganida qanday buxgalteriya provodkasi tuziladi?",
+        "variantlar": [
+            "D-t 4810-“Uzoq muddatli ijara bo‘yicha olinadigan joriy to‘lovlar” scho‘ti, K-t 0920-“Uzoq muddatli ijara bo‘yicha olinadigan to‘lovlar” scho‘ti",
+            "D-t 4810-“Uzoq muddatli ijara bo‘yicha olinadigan joriy to‘lovlar” scho‘ti, K-t 9550-“Uzoq muddatli ijaradan daromadlar” scho‘ti",
+            "D-t 4810-“Uzoq muddatli ijara bo‘yicha olinadigan joriy to‘lovlar” scho‘ti, K-t 5110-“Hisob-kitob scho‘ti”",
+            "D-t 4810-“Uzoq muddatli ijara bo‘yicha olinadigan joriy to‘lovlar” scho‘ti, K-t 9350-“Qisqa muddatli ijaradan daromadlar” scho‘ti"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Intellektual mulk ob’ektlaridan foydalanish huquqi berilishi natijasida olinadigan royalti hisoblanganda qanday buxgalteriya o‘tkazmasi tuzialdi?",
+        "variantlar": [
+            "D-t 4850-“Olinadigan royalti” scho‘ti, 9510-“Royalti ko‘rinishidagi daromadlar” scho‘ti",
+            "D-t 4850-“Olinadigan royalti” scho‘ti, K-t 5110-“Hisob-kitob scho‘ti”.",
+            "D-t 4850-“Olinadigan royalti” scho‘ti, 5210-“Mamlakat ichidagi valyuta scheti”",
+            "D-t 4850-“Olinadigan royalti” scho‘ti, 9560-“Qimmatli qog‘ozlarni qayta baholashdan daromadlar” scho‘ti"
+        ],
+        "togri": 3
+    },
+    {
+        "savol": "Intellektual mulk ob’ektlaridan foydalanish huquqi berilishi natijasida hisoblangan olinadigan royalti hisob-kitob scho‘tiga kelib tushganda qanday buxgalteriya o‘tkazmasi tuzialdi?",
+        "variantlar": [
+            "D-t 5110-“Hisob-kitob scho‘ti”, K-t 4850-“Olinadigan royalti” scho‘ti.",
+            "D-t 4850-“Olinadigan royalti” scho‘ti, 9510-“Royalti ko‘rinishidagi daromadlar” scho‘ti",
+            "D-t 4850-“Olinadigan royalti” scho‘ti, 5210-“Mamlakat ichidagi valyuta scheti”",
+            "D-t 4850-“Olinadigan royalti” scho‘ti, 9560-“Qimmatli qog‘ozlarni qayta baholashdan daromadlar” scho‘ti"
+        ],
+        "togri": 0
+    },
+    {
+        "savol": "Korxonaning bankdagi hisobraqamiga olinadigan foizlar kelib tushganida qanday buxgalteriya o‘tkazmasi tuziladi?",
+        "variantlar": [
+            "D-t 5110-“Hisob-kitob scheti” K-t 4830-“Olinadigan foizlar” scho‘ti",
+            "D-t 4830-“Olinadigan foizlar” scheti K-t 9530-“Foizlar ko‘rinishidagi daromadlar” scho‘ti",
+            "D-t 5110-“Hisob-kitob scho‘ti” K-t 9610-“Foizlar ko‘rinishidagi xarajatlar”",
+            "D-t 5210-“Mamlaakat ichidagi valyuta scho‘tlari” K-t 4830-“Olinadigan foizlar” scho‘ti"
+        ],
+        "togri": 1
+    },
+    {
+        "savol": "Korxonaning olgan qisqa muddatli qarzi bo‘yicha foiz hisoblanganida qanday buxgalteriya o‘tkazmasi tuziladi?",
+        "variantlar": [
+            "D-t 9610-“Foiz ko‘rinishidagi xarajatlar” scho‘ti K-t 6920-“Hisoblangan foizlar” scho‘ti",
+            "D-t 9610-“Foiz ko‘rinidagi xarajatlar” scho‘ti D-t 5110-“Hisob-kitob scho‘ti",
+            "D-t 6920-“Hisoblangan foizlar” scho‘ti K-t 5110-“Hisob-kitob scho‘ti",
+            "D-t 6920-“Hisoblangan foizlar” scho‘ti K-t 5210-“Mamlakat ichidagi valyuta scho‘tlari”"
+        ],
+        "togri": 2
+    },
+    {
+        "savol": "Qisqa muddatli qarz bo‘yicha hisoblangan foiz hisob-kitob scho‘tidan to‘langanida qanday buxgalteriya o‘tkazmasi tuziladi?",
+        "variantlar": [
+            "D-t 6920-“Hisoblangan foizlar” scho‘ti K-t 5110-“Hisob-kitob scho‘ti”",
+            "D-t 9610-“Foiz ko‘rinishidagi xarajatlar” scho‘ti K-t 6920-“Hisoblangan foizlar” scho‘ti",
+            "D-t 6920-“Hisoblangan foizlar” scho‘ti K-t 5210-“Mamlakat ichidagi valyuta scho‘tlari”",
+            "D-t 5110-“Hisob-kitob scho‘ti” K-t 4830-“Olinadigan foizlar” scho‘ti"
+        ],
+        "togri": 3
+    }
+]
