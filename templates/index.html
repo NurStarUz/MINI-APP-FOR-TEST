@@ -28,7 +28,7 @@
         <button class="button" onclick="startTest(10)">TEST 10</button>
         <button class="button" onclick="startTest(50)">TEST 50</button>
         <button class="button" onclick="showResults()">NATIJALARIM</button>
-        <button class="button">REYTING</button>
+        <button class="button" onclick="location.href='/rating'">REYTING</button>
     </div>
 
     <div id="testContainer" style="display:none;">
@@ -44,12 +44,12 @@
         let correctAnswers = 0;
         let totalQuestions = 0;
 
-        // JSON faylni yuklash
+        // Flask serverdan testlarni yuklash
         async function loadQuestions() {
             try {
-                let response = await fetch("static/tests.json");
+                let response = await fetch("/get_tests");
                 questions = await response.json();
-                console.log("Savollar yuklandi:", questions);
+                console.log("Tasodifiy testlar yuklandi:", questions);
             } catch (error) {
                 console.error("Savollarni yuklashda xatolik:", error);
             }
@@ -104,21 +104,11 @@
                 }
             });
 
-            if (selected === correct) {
-                correctAnswers++;
-            }
+            if (selected === correct) correctAnswers++;
 
-            setTimeout(() => {
-                currentQuestionIndex++;
-                showQuestion();
-            }, 1000);
+            currentQuestionIndex++;
+            setTimeout(showQuestion, 1000);
         }
-
-        function showResults() {
-            document.getElementById("resultText").innerHTML = `Sizning oxirgi natijangiz: ${correctAnswers} ta to‘g‘ri javob!`;
-        }
-
-        loadQuestions();
     </script>
 
 </body>
