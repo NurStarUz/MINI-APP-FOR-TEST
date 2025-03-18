@@ -249,10 +249,10 @@
   {
     "savol": "Xo‘jalikning hisob-kitob scho‘tidan shartnomaga muvofiq mol yetkazib beruvchilarga bo‘nak o‘tkazilganda scho‘tlar aloqasi qanday bo‘ladi?",
     "variantlar": [
-      "D-t 6010 \tK-t 5110",
-      "D-t 4310\tK-t 5110",
-      "D-t 5110\tK-t 6010",
-      "D-t 5110 \tK-t 4310"
+      "D-t 6010 K-t 5110",
+      "D-t 4310 K-t 5110",
+      "D-t 5110 K-t 6010",
+      "D-t 5110 K-t 4310"
     ],
     "togri": 1
   },
@@ -319,10 +319,10 @@
   {
     "savol": "Xo‘jalikning hisob-kitob scho‘tidan mol yetkazib beruvchilarga pul mablag‘lari o‘tkazilganda scho‘tlar aloqasi qanday bo‘ladi?",
     "variantlar": [
-      "D-t 6010 \tK-t 5110",
-      "D-t 6210 \tK-t 5110",
-      "D-t 5110 \tK-t 6010",
-      "D-t 6010 \tK-t 5510"
+      "D-t 6010 K-t 5110",
+      "D-t 6210 K-t 5110",
+      "D-t 5110 K-t 6010",
+      "D-t 6010 K-t 5510"
     ],
     "togri": 0
   },
@@ -591,10 +591,10 @@
   {
     "savol": "Xo‘jalikning hisob-kitob scho‘tiga xaridorlardan pul mablag‘lari kelib tushganda scho‘tlar aloqasi qanday bo‘ladi?",
     "variantlar": [
-      "D-t 6010 \tK-t 5110",
-      "D-t 5110 \tK-t 6010",
-      "D-t 4010 \tK-t 5110",
-      "D-t 5110 \tK-t 4010"
+      "D-t 6010 K-t 5110",
+      "D-t 5110 K-t 6010",
+      "D-t 4010 K-t 5110",
+      "D-t 5110 K-t 4010"
     ],
     "togri": 3
   },
@@ -661,10 +661,10 @@
   {
     "savol": "Mol yetkazib beruvchilardan materiallar olingada scho‘tlar aloqasi qanday bo‘ladi?",
     "variantlar": [
-      "D-t 6010 \tK-t 1010",
-      "D-t 2810 \tK-t 6010",
-      "D-t 1010 \tK-t 6010",
-      "D-t 6010 \tK-t 2810"
+      "D-t 6010 K-t 1010",
+      "D-t 2810 K-t 6010",
+      "D-t 1010 K-t 6010",
+      "D-t 6010 K-t 2810"
     ],
     "togri": 2
   },
@@ -721,10 +721,10 @@
   {
     "savol": "Korxona ishlab chiqarish faoliyati bilan shug‘ullanadi. Oktyabr oyi davomida quyidagi xarajatlarni amalga oshirgan: Material xarajatlar - 150 000so‘m; Asosiy ishlab chiqarish xodimlari ish haqi - 200 000 so‘m; Boshqa xarajatlar - 100 000 so‘m; Ishlab chiqarishdagi asosiy vositalar eskirishi - 50 000 so‘m; Boshqa operatsion xarajatlar - 60 000 so‘m; Ishlab chiqarilgan mahsulot - 15 150 birlik. Bir birlik mahsulot tannarxini aniqlang?",
     "variantlar": [
-      "37so‘m/birlik",
-      "30 so‘m/birlik",
-      "47so‘m/birlik",
-      "33 so‘m/birlik"
+      "37so‘m birlik",
+      "30 so‘m birlik",
+      "47so‘m birlik",
+      "33 so‘m birlik"
     ],
     "togri": 0
   },
@@ -751,20 +751,20 @@
   {
     "savol": "Xo‘jalikda hisobot yilida 120 ming so‘mlik mahsulot ishlab chiqarildi va tayyor mahsulot sifatida kirim qilindi. Ushbu muomalaga qanday scho‘tlar aloqasi tuziladi?",
     "variantlar": [
-      "D-t 2910 \tK-t 2010",
-      "D-t 2010 \tK-t 2810",
-      "D-t 2010 \tK-t 2910",
-      "D-t 2810 \tK-t 2010"
+      "D-t 2910 K-t 2010",
+      "D-t 2010 K-t 2810",
+      "D-t 2010 K-t 2910",
+      "D-t 2810 K-t 2010"
     ],
     "togri": 3
   },
   {
     "savol": "Ishlab chiqarish jarayonida ishlayotgan ishchilarga ish haqi hisoblansa, buxgalteriya hisobida qanday aks ettiriladi?",
     "variantlar": [
-      "D-t 2010 \tK-t 6710",
-      "D-t 4210 \tK-t 2010",
-      "D-t 2010 \tK-t 4210",
-      "D-t 6710\tK-t 2010"
+      "D-t 2010 K-t 6710",
+      "D-t 4210 K-t 2010",
+      "D-t 2010 K-t 4210",
+      "D-t 6710 K-t 2010"
     ],
     "togri": 0
   },
@@ -812,40 +812,40 @@
   {
     "savol": "Shartnomaga muvofiq xaridorlarga jo‘natilgan mahsulot haqiqiy tannarxi bo‘yicha hisobdan o‘chirilishi buxgalteriya hisobida qanday aks ettiriladi?",
     "variantlar": [
-      "D-t 4010 \tK-t 9010",
-      "D-t 9110 \tK-t 2810",
-      "D-t 2810 \tK-t 9110",
-      "D-t 9010 \tK-t 4010"
+      "D-t 4010 K-t 9010",
+      "D-t 9110 K-t 2810",
+      "D-t 2810 K-t 9110",
+      "D-t 9010 K-t 4010"
     ],
     "togri": 1
   },
   {
     "savol": "Sotilgan mahsulotlar shartnomaga muvofiq xaridorlar tomonidan qabul qilindi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 2810 \tK-t 9110",
-      "D-t 9010 \tK-t 4010",
-      "D-t 4010 \tK-t 9010",
-      "D-t 9110 \tK-t 2810"
+      "D-t 2810 K-t 9110",
+      "D-t 9010 K-t 4010",
+      "D-t 4010 K-t 9010",
+      "D-t 9110 K-t 2810"
     ],
     "togri": 2
   },
   {
     "savol": "Xaridorlar tomonidan sotilgan mahsulotlarning qiymati shartnomaga muvofiq to‘lab berilganda buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 4010 \tK-t 5110",
-      "D-t 5110 \tK-t 9010",
-      "D-t 5110 \tK-t 2810",
-      "D-t 5110 \tK-t 4010"
+      "D-t 4010 K-t 5110",
+      "D-t 5110 K-t 9010",
+      "D-t 5110 K-t 2810",
+      "D-t 5110 K-t 4010"
     ],
     "togri": 3
   },
   {
     "savol": "Xaridorlar tomonidan shartnomaga muvofiq 15 % oldindan bo‘nak to‘lab berilganda buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 5110 \tK-t 6310",
-      "D-t 5110 \tK-t 9010",
-      "D-t 5110 \tK-t 4010",
-      "D-t 6310 \tK-t 5110"
+      "D-t 5110 K-t 6310",
+      "D-t 5110 K-t 9010",
+      "D-t 5110 K-t 4010",
+      "D-t 6310 K-t 5110"
     ],
     "togri": 0
   },
@@ -981,20 +981,20 @@
   {
     "savol": "Hisoblangan ish haqidan kasaba uyushmasiga 1 % ajratma ushlandi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 6990 \tK-t 6710",
-      "D-t 6710 \tK-t 6990",
-      "D-t 6410 \tK-t 6710",
-      "D-t 6520 \tK-t 6710"
+      "D-t 6990 K-t 6710",
+      "D-t 6710 K-t 6990",
+      "D-t 6410 K-t 6710",
+      "D-t 6520 K-t 6710"
     ],
     "togri": 2
   },
   {
     "savol": "Ma’muriy-boshqaruv xodimlari uchun hisoblangan ish haqiga nisbatan ijtimoiy soliq hisoblandi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 2010 \tK-t 6520",
-      "D-t 9420 \tK-t 6410",
-      "D-t 9420 \tK-t 6520",
-      "D-t 2010 \tK-t 6410"
+      "D-t 2010 K-t 6520",
+      "D-t 9420 K-t 6410",
+      "D-t 9420 K-t 6520",
+      "D-t 2010 K-t 6410"
     ],
     "togri": 3
   },
@@ -1120,20 +1120,20 @@
   {
     "savol": "Ish haqidan ushlab qolingan daromad solig‘i summasi hisob-kitob scho‘tidan byudjetga o‘tkazib berildi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 5110 \tK-t 6410",
-      "D-t 2010 \tK-t 6410",
-      "D-t 9420 \tK-t 5110",
-      "D-t 6410 \tK-t 5110"
+      "D-t 5110 K-t 6410",
+      "D-t 2010 K-t 6410",
+      "D-t 9420 K-t 5110",
+      "D-t 6410 K-t 5110"
     ],
     "togri": 0
   },
   {
     "savol": "Ish haqidan kasaba uyushmasiga hisoblangan 1 % ajratma hisob-kitob scho‘tidan o‘tkazib berildi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 6520 \tK-t 5110",
-      "D-t 6410 \tK-t 5110",
-      "D-t 6710 \tK-t 5110",
-      "D-t 6990 \tK-t 5110"
+      "D-t 6520 K-t 5110",
+      "D-t 6410 K-t 5110",
+      "D-t 6710 K-t 5110",
+      "D-t 6990 K-t 5110"
     ],
     "togri": 1
   },
@@ -1190,20 +1190,20 @@
   {
     "savol": "Ish haqiga nisbatan hisoblangan ijtimoiy soliq hisob-kitob scho‘tidan o‘tkazib berildi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 6990 \tK-t 5110",
-      "D-t 6710 \tK-t 5110",
-      "D-t 6520 \tK-t 5110",
-      "D-t 6410 \tK-t 5110"
+      "D-t 6990 K-t 5110",
+      "D-t 6710 K-t 5110",
+      "D-t 6520 K-t 5110",
+      "D-t 6410 K-t 5110"
     ],
     "togri": 3
   },
   {
     "savol": "Ma’muriy-boshqaruv xodimlarga kassadan ish haqi tarqatildi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 5110 \tK-t 6710",
-      "D-t 5010 \tK-t 6710",
-      "D-t 6710 \tK-t 5010",
-      "D-t 9420 \tK-t 5010"
+      "D-t 5110 K-t 6710",
+      "D-t 5010 K-t 6710",
+      "D-t 6710 K-t 5010",
+      "D-t 9420 K-t 5010"
     ],
     "togri": 0
   },
@@ -1280,20 +1280,20 @@
   {
     "savol": "Korxonaning ma’muriy-boshqaruv xodimlariga ish haqi hisoblandi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 6710 \tK-t 2010",
-      "D-t 2510 \tK-t 6710",
-      "D-t 2010 \tK-t 6710",
-      "D-t 9420 \tK-t 6710"
+      "D-t 6710 K-t 2010",
+      "D-t 2510 K-t 6710",
+      "D-t 2010 K-t 6710",
+      "D-t 9420 K-t 6710"
     ],
     "togri": 0
   },
   {
     "savol": "Hisoblangan ish haqidan daromad solig‘i ushlandi. Mazkur xo‘jalik operatsiyasi buxgalteriya hisobida qanday hisobga olinadi?",
     "variantlar": [
-      "D-t 6710 \tK-t 6410",
-      "D-t 6410 \tK-t 6710",
-      "D-t 2010 \tK-t 6710",
-      "D-t 9420 \tK-t 6410"
+      "D-t 6710 K-t 6410",
+      "D-t 6410 K-t 6710",
+      "D-t 2010 K-t 6710",
+      "D-t 9420 K-t 6410"
     ],
     "togri": 1
   },
