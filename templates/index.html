@@ -27,6 +27,8 @@
     <div class="buttons">
         <button class="button" onclick="startTest(10)">TEST 10</button>
         <button class="button" onclick="startTest(50)">TEST 50</button>
+        <button class="button" onclick="location.href='/test_sections'">10 tadan TEST</button>
+        <button class="button" onclick="location.href='/start_full_test'">Full Test</button>
         <button class="button" onclick="showResults()">NATIJALARIM</button>
         <button class="button" onclick="location.href='/rating'">REYTING</button>
     </div>
@@ -37,79 +39,6 @@
     </div>
 
     <p class="result" id="resultText"></p>
-
-    <script>
-        let questions = [];
-        let currentQuestionIndex = 0;
-        let correctAnswers = 0;
-        let totalQuestions = 0;
-
-        // Flask serverdan testlarni yuklash
-        async function loadQuestions() {
-            try {
-                let response = await fetch("/get_tests");
-                questions = await response.json();
-                console.log("Tasodifiy testlar yuklandi:", questions);
-            } catch (error) {
-                console.error("Savollarni yuklashda xatolik:", error);
-            }
-        }
-
-        async function startTest(count) {
-            if (questions.length === 0) {
-                await loadQuestions();
-            }
-
-            totalQuestions = count > questions.length ? questions.length : count;
-            currentQuestionIndex = 0;
-            correctAnswers = 0;
-            document.getElementById("testContainer").style.display = "block";
-            document.getElementById("resultText").innerHTML = "";
-            showQuestion();
-        }
-
-        function showQuestion() {
-            if (currentQuestionIndex >= totalQuestions) {
-                document.getElementById("testContainer").style.display = "none";
-                document.getElementById("resultText").innerHTML = `Siz ${correctAnswers} ta to‘g‘ri javob berdingiz (${Math.round((correctAnswers / totalQuestions) * 100)}%).`;
-                return;
-            }
-
-            let questionData = questions[currentQuestionIndex];
-            document.getElementById("questionText").innerText = questionData.savol;
-
-            let answersContainer = document.getElementById("answersContainer");
-            answersContainer.innerHTML = "";
-
-            questionData.variantlar.forEach((variant, index) => {
-                let btn = document.createElement("button");
-                btn.classList.add("answer");
-                btn.innerText = variant;
-                btn.onclick = function() {
-                    checkAnswer(index, questionData.togri);
-                };
-                answersContainer.appendChild(btn);
-            });
-        }
-
-        function checkAnswer(selected, correct) {
-            let buttons = document.querySelectorAll(".answer");
-            buttons.forEach((btn, index) => {
-                btn.classList.remove("correct", "wrong");
-                if (index === correct) {
-                    btn.classList.add("correct");
-                }
-                if (index === selected && selected !== correct) {
-                    btn.classList.add("wrong");
-                }
-            });
-
-            if (selected === correct) correctAnswers++;
-
-            currentQuestionIndex++;
-            setTimeout(showQuestion, 1000);
-        }
-    </script>
 
 </body>
 </html>
