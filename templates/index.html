@@ -20,7 +20,6 @@
     </style>
 </head>
 <body>
-
     <h1>NurStar Test</h1>
     <p>TDAU Buxgalteriya hisobi va audit 21-100ST</p>
 
@@ -44,28 +43,23 @@
         let correctAnswers = 0;
         let totalQuestions = 0;
 
-        // Flask serverdan testlarni yuklash
-        async function loadQuestions() {
+        async function startTest(count) {
             try {
                 let response = await fetch("/get_tests");
-                questions = await response.json();
-                console.log("Tasodifiy testlar yuklandi:", questions);
+                let allQuestions = await response.json();
+                
+                // Tasodifiy testlarni tanlash
+                questions = allQuestions.sort(() => Math.random() - 0.5).slice(0, count);
+                
+                totalQuestions = questions.length;
+                currentQuestionIndex = 0;
+                correctAnswers = 0;
+                document.getElementById("testContainer").style.display = "block";
+                document.getElementById("resultText").innerHTML = "";
+                showQuestion();
             } catch (error) {
                 console.error("Savollarni yuklashda xatolik:", error);
             }
-        }
-
-        async function startTest(count) {
-            if (questions.length === 0) {
-                await loadQuestions();
-            }
-
-            totalQuestions = count > questions.length ? questions.length : count;
-            currentQuestionIndex = 0;
-            correctAnswers = 0;
-            document.getElementById("testContainer").style.display = "block";
-            document.getElementById("resultText").innerHTML = "";
-            showQuestion();
         }
 
         function showQuestion() {
@@ -110,6 +104,5 @@
             setTimeout(showQuestion, 1000);
         }
     </script>
-
 </body>
 </html>
